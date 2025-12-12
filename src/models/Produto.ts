@@ -1,15 +1,17 @@
-export class Produto{
+export abstract class Produto{
   // atributos da Classe
   private _id : number;
   private _quantidade : number;
   private _valor : number;
   private _nomeProduto :string;
+  private _tipo: number;
 
-  constructor(id: number,quantidade: number,valor: number,nomeProduto : string){
+  constructor(id: number,quantidade: number,valor: number,nomeProduto : string, tipo:number){
     this._id = id;
     this._quantidade = quantidade;
     this._valor = valor;
     this._nomeProduto = nomeProduto;
+    this._tipo = tipo;
   }
 
   //metodos Get e Set
@@ -41,6 +43,13 @@ export class Produto{
   public set nomeProduto(nome:string){
     this._nomeProduto = nome
   }
+  public get tipo(){
+    return this._tipo;
+  }
+
+  public set tipo(tipo:number){
+    this._tipo = tipo
+  }
 
   //metodos especificos
 
@@ -50,6 +59,7 @@ export class Produto{
         console.log("*****************************************************");
         console.log("id: " + this._id);
         console.log("Nome Produto: " + this._nomeProduto);
+        console.log("Tipo do Produto: " + this._tipo);
         console.log("Quantidade De Produtos: " + this._quantidade);
         console.log("Valor do produto: " + this._valor.toFixed(2));
   }

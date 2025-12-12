@@ -2,10 +2,13 @@ import read  = require("readline-sync")
 import { colors } from "./src/util/Colors";
 import { ProdutosContoller } from "./src/controller/ProdutosController";
 import { Produto } from "./src/models/Produto";
+import { ProdutoBebidas } from "./src/models/ProdutoBebidas";
+import { ProdutoFutasELegumes } from "./src/models/ProdutoFrutasELegumes";
 
 export function main(){
 
-  let opcao,valor,quantidade,id:number;
+  const tiposProduto = ["Bebidas", "Frutas e Legumes"]
+  let opcao,valor,quantidade,id,litros,peso,tipo:number;
   let nomeProduto : string
   let produtos : ProdutosContoller = new ProdutosContoller();
 
@@ -39,16 +42,31 @@ export function main(){
           case 1:
             console.log(colors.fg.whitestrong, "\n\nCadastrar Produto\n\n", colors.reset);
             
-                console.log("\nDigite o Nome do Produto (Primeira letra Maiuscula):");
-                nomeProduto = read.question("");
+            console.log("\nDigite o Nome do Produto (Primeira letra Maiuscula):");
+            nomeProduto = read.question("");
 
-                console.log("\n Digite a quantidade do Produto:");
-                quantidade = read.questionInt("");
+            console.log("\n Digite a quantidade do Produto:");
+            quantidade = read.questionInt("");
 
-                console.log("\nDigite o valor do seu Produto (R$):");
-                valor = read.questionInt("");
+            console.log("\nDigite o valor do seu Produto (R$):");
+             valor = read.questionInt("");
 
-                produtos.cadastrarProdutos(new Produto(produtos.gerarId(),quantidade,valor,nomeProduto))
+            console.log("\nDigite o tipo do seu produto:");
+            tipo = read.keyInSelect(tiposProduto,"",{cancel:false})+1;
+
+             switch(tipo){
+                    case 1:
+                        console.log("Digite os Litros da Bebida:")
+                        litros = read.questionInt("");
+                        produtos.cadastrarProdutos(new ProdutoBebidas(litros,produtos.gerarId(),quantidade,valor,nomeProduto,tipo))
+                        break
+                  case 2:
+                    console.log("Digite o Peso do Alimento:")
+                        peso = read.questionInt("");
+                       produtos.cadastrarProdutos(new ProdutoFutasELegumes(peso,produtos.gerarId(),quantidade,valor,nomeProduto,tipo))
+                        break;
+                }
+                
           keyPress()
           break
           case 2:
@@ -74,7 +92,21 @@ export function main(){
 
                 console.log("\nDigite o valor do seu Produto (R$):");
                 valor = read.questionInt("");
-              produtos.atualizarProduto(new Produto(id,quantidade,valor,nomeProduto))
+
+                console.log("\nDigite o tipo do seu produto:");
+                tipo = read.keyInSelect(tiposProduto,"",{cancel:false})+1;
+              switch(tipo){
+                    case 1:
+                        console.log("Digite os Litros da Bebida:")
+                        litros = read.questionInt("");
+                        produtos.cadastrarProdutos(new ProdutoBebidas(litros,id,quantidade,valor,nomeProduto,tipo))
+                        break
+                  case 2:
+                    console.log("Digite o Peso do Alimento:")
+                        peso = read.questionInt("");
+                       produtos.cadastrarProdutos(new ProdutoFutasELegumes(peso,id,quantidade,valor,nomeProduto,tipo))
+                        break;
+                }
             }else{
                 console.log("Produto invalido")
             }
