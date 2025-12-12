@@ -1,7 +1,6 @@
 import read  = require("readline-sync")
 import { colors } from "./src/util/Colors";
 import { ProdutosContoller } from "./src/controller/ProdutosController";
-import { Produto } from "./src/models/Produto";
 import { ProdutoBebidas } from "./src/models/ProdutoBebidas";
 import { ProdutoFutasELegumes } from "./src/models/ProdutoFrutasELegumes";
 

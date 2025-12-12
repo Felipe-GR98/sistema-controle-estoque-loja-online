@@ -12,8 +12,8 @@ export class ProdutosContoller implements ProdutosRepository{
   }
 
   listarProdutos(): void {
-    this.listarTodosProdutos.forEach(protutos => {
-      protutos.visualizar()
+    this.listarTodosProdutos.forEach(produtos => {
+      produtos.visualizar()
     });   
   }
 
