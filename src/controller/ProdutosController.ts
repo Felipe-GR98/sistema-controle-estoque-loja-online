@@ -54,7 +54,7 @@ export class ProdutosContoller implements ProdutosRepository{
       return null;
     }
 
-   public bucarNoArrayNome(nome: string): Produto | null{
-     return this.listarTodosProdutos.find(produto => nome === produto.nomeProduto) || null
-      }
+  //  public bucarNoArrayNome(nome: string): Produto | null{
+  //    return this.listarTodosProdutos.find(produto => nome === produto.nomeProduto) || null
+  //     }
 }
