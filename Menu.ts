@@ -58,9 +58,9 @@ export function main(){
 
 function sobre(): void {
     console.log("\n*****************************************************");
-    console.log("Projeto Desenvolvido por: ");
+    console.log("Projeto Desenvolvido por: Felipe Gonçalves Rodrigues ");
     console.log("Generation Brasil - generation@generation.org");
-    console.log("github.com/conteudoGeneration");
+    console.log("github.com/Felipe-GR98");
     console.log("*****************************************************");
 }
 
