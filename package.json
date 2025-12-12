@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "readline-sync": "^1.4.10",
+    "ts-node": "^10.9.2"
+  },
+  "name": "sistema-controle-estoque-loja-online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Felipe-GR98/sistema-controle-estoque-loja-online.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Felipe-GR98/sistema-controle-estoque-loja-online/issues"
+  },
+  "homepage": "https://github.com/Felipe-GR98/sistema-controle-estoque-loja-online#readme",
+  "devDependencies": {
+    "@types/readline-sync": "^1.4.8"
+  }
+}
