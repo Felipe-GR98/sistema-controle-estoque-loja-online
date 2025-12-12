@@ -37,8 +37,8 @@ export class ProdutosContoller implements ProdutosRepository{
       let buscarPorduto = this.bucarNoArray(produto)
 
       if(buscarPorduto != null){
-        this.listarTodosProdutos.slice(this.listarTodosProdutos.indexOf(buscarPorduto),1)
-        console.log(`${colors.fg.green} O Seu Produto: ${produto} Foi atualizado com sucesso! ${colors.reset}`)
+        this.listarTodosProdutos.splice(this.listarTodosProdutos.indexOf(buscarPorduto),1)
+        console.log(`${colors.fg.green} O Seu Produto: ${produto} Foi Deletado com sucesso! ${colors.reset}`)
       }else{
       console.log("Produto Invalido")
     }
@@ -46,12 +46,15 @@ export class ProdutosContoller implements ProdutosRepository{
 
 
    public bucarNoArray(numero: number): Produto | null{
-        this.listarTodosProdutos.forEach(produtos => {
-          if(produtos.id === numero){
-          return produtos;
+       for(let produto of this.listarTodosProdutos ){
+        if(produto.id === numero){
+          return produto;
         }
-      });{
       }
       return null;
     }
+
+   public bucarNoArrayNome(nome: string): Produto | null{
+     return this.listarTodosProdutos.find(produto => nome === produto.nomeProduto) || null
+      }
 }

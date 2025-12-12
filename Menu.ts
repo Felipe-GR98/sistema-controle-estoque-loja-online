@@ -1,9 +1,13 @@
 import read  = require("readline-sync")
 import { colors } from "./src/util/Colors";
+import { ProdutosContoller } from "./src/controller/ProdutosController";
+import { Produto } from "./src/models/Produto";
 
 export function main(){
 
-  let opcao: number
+  let opcao,valor,quantidade,id:number;
+  let nomeProduto : string
+  let produtos : ProdutosContoller = new ProdutosContoller();
 
   while(true){
     console.log(colors.bg.black, colors.fg.yellow, 
@@ -33,19 +37,56 @@ export function main(){
         }
         switch(opcao){
           case 1:
-            console.log("Cadastrar Produto: ")
+            console.log(colors.fg.whitestrong, "\n\nCadastrar Produto\n\n", colors.reset);
+            
+                console.log("\nDigite o Nome do Produto (Primeira letra Maiuscula):");
+                nomeProduto = read.question("");
+
+                console.log("\n Digite a quantidade do Produto:");
+                quantidade = read.questionInt("");
+
+                console.log("\nDigite o valor do seu Produto (R$):");
+                valor = read.questionInt("");
+
+                produtos.cadastrarProdutos(new Produto(produtos.gerarId(),quantidade,valor,nomeProduto))
           keyPress()
           break
           case 2:
-            console.log("Listar todos produtos:")
+
+            console.log("Listar todos produtos:\n")
+            produtos.listarProdutos()
+
           keyPress()
           break
           case 3:
             console.log("Atualizar Produto")
+
+            console.log("Digite o Numero do produto: ")
+             id = read.questionInt("")
+
+            let produto = produtos.bucarNoArray(id);
+            if(produto != null){
+                console.log("\nDigite o Nome do Produto (Primeira letra Maiuscula):");
+                nomeProduto = read.question("");
+
+                console.log("\n Digite a quantidade do Produto:");
+                quantidade = read.questionInt("");
+
+                console.log("\nDigite o valor do seu Produto (R$):");
+                valor = read.questionInt("");
+              produtos.atualizarProduto(new Produto(id,quantidade,valor,nomeProduto))
+            }else{
+                console.log("Produto invalido")
+            }
+
+
           keyPress()  
           break
           case 4:
             console.log(" Apagar Produto")
+             console.log("Digite o numero do Produto: ")
+                id = read.questionInt("")
+                produtos.deletarProduto(id);
           keyPress()         
           break
           default:

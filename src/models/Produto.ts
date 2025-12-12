@@ -1,4 +1,4 @@
-export abstract class Produto{
+export class Produto{
   // atributos da Classe
   private _id : number;
   private _quantidade : number;
@@ -48,6 +48,7 @@ export abstract class Produto{
         console.log("\n\n*****************************************************");
         console.log("Dados do Produto:");
         console.log("*****************************************************");
+        console.log("id: " + this._id);
         console.log("Nome Produto: " + this._nomeProduto);
         console.log("Quantidade De Produtos: " + this._quantidade);
         console.log("Valor do produto: " + this._valor.toFixed(2));
